@@ -313,7 +313,7 @@ footer strong{
   border-radius:32px;
   padding:32px 28px 24px;
   position:relative;
-  overflow:hidden;
+  overflow:auto;
 }
 .modal-box::before{
   content:"";
@@ -662,11 +662,9 @@ function openMessage(index){
   container.appendChild(p);
  });
  document.getElementById("messageModal").classList.add("show");
- document.body.style.overflow="hidden";
 }
 function closeMessage(){
  document.getElementById("messageModal").classList.remove("show");
- document.body.style.overflow="";
 }
 function nextMessage(){openMessage((current+1)%sections.length)}
 function previousMessage(){openMessage((current-1+sections.length)%sections.length)}
