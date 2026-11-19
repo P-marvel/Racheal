@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#8054b5">
+<title>A Little Place for You 💜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#8054b5; --deep:#573486; --lavender:#ede3fa;
+  --pale:#f9f6ff; --ink:#38264c; --muted:#806d96;
+  --white:#fff; --line:#e8dcf5; --pink:#f8eaf5;
+}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+html{
+  scroll-behavior:smooth
+}
+body{
+  background:var(--pale);
+  color:var(--ink);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden
+}
+button{
+  font:inherit
+}
+.hero{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:28px 18px;
+  position:relative;overflow:hidden;
+}
+.hero::before,.hero::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.6;
+  animation:gradientShift 15s ease-in-out infinite
+}
+.hero::before{
+  width:400px;
+  height:400px;
+  background:linear-gradient(135deg,#8054b5 0,#6b4aa5 100%);
+  top:-100px;
+  left:-100px;
+  animation-direction:alternate
+}
+.hero::after{
+  width:300px;
+  height:300px;
+  background:linear-gradient(135deg,#ede3fa 0,#f9f6ff 100%);
+  bottom:-50px;
+  right:-50px;
+  animation-direction:normal
+}
+@keyframes gradientShift{
+  0%,100%{
+    transform:translate(0,0)
+  }
+  50%{
+    transform:translate(30px,30px)
+  }
+}
+.hero-card{
+  width:min(680px,100%);
+  padding:clamp(30px,7vw,62px) clamp(22px,6vw,55px);
+  text-align:center;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(128,84,181,.15);
+  border-radius:32px;
+  box-shadow:0 32px 96px #65418b2a;
+  position:relative;
+  z-index:1;
+}
+.hero-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+}
+.eyebrow{
+  font-size:.7rem;
+  letter-spacing:.2em;
+  font-weight:700;
+  color:var(--purple);
+  text-transform:uppercase;
+  margin-bottom:12px;
+  display:inline-block;
+}
+.big-heart{
+  font-size:64px;
+  display:inline-block;
+  color:var(--purple);
+  animation:heartbeat 2s ease-in-out infinite;
+  margin-bottom:16px;
+}
+@keyframes heartbeat{
+  0%,100%{
+    transform:scale(1) translateY(0);
+  }
+  50%{
+    transform:scale(1.15) translateY(-4px);
+  }
+}
+h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2.8rem,9vw,5.5rem);
+  line-height:1.1;
+  color:var(--deep);
+  margin-bottom:16px;
+}
+.hero-sub{
+  max-width:490px;
+  margin:16px auto 0;
+  color:var(--muted);
+  font-size:1.05rem;
+  line-height:1.9;
+}
+.hero-art{
+  width:min(100%,420px);
+  height:200px;
+  object-fit:cover;
+  border-radius:24px;
+  margin:24px auto 0;
+  border:4px solid var(--pink);
+  box-shadow:0 12px 40px #65418b15;
+  transition:transform .3s ease;
+}
+.hero-art:hover{
+  transform:scale(1.02);
+}
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:16px 32px;
+  background:var(--purple);
+  color:#fff;
+  font-weight:700;
+  font-size:1rem;
+  box-shadow:0 12px 32px #8054b545;
+  cursor:pointer;
+  transition:all .25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  transition:left .5s ease;
+}
+.btn:hover::before{
+  left:100%;
+}
+.btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 20px 40px #8054b555;
+}
+.btn:focus-visible{
+  outline:3px solid #c7a9e8;
+  outline-offset:4px
+}
+main{
+  padding:80px 18px 100px;
+  max-width:1200px;
+  margin:auto
+}
+.intro{
+  text-align:center;
+  margin-bottom:40px
+}
+.intro .eyebrow{
+  margin-bottom:12px;
+}
+.intro h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(2rem,5vw,3.2rem);
+  color:var(--deep);
+  margin-bottom:16px;
+}
+.intro p{
+  color:var(--muted);
+  font-size:1.05rem;
+  line-height:1.8;
+  max-width:600px;
+  margin:0 auto
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:24px;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:28px 24px;
+  text-align:center;
+  transition:all .35s cubic-bezier(.16,.86,.44,1);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg,var(--purple),var(--deep));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .35s cubic-bezier(.16,.86,.44,1);
+}
+.card:hover::before{
+  transform:scaleX(1);
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 28px 56px #65418b18;
+}
+.card-icon{
+  width:72px;
+  height:72px;
+  border-radius:24px;
+  background:var(--lavender);
+  display:grid;
+  place-items:center;
+  font-size:34px;
+  margin:0 auto 20px;
+  transition:transform .3s ease;
+}
+.card:hover .card-icon{
+  transform:scale(1.1);
+}
+.card h3{
+  font-family:"Playfair Display",serif;
+  font-size:1.25rem;
+  color:var(--deep);
+  margin-bottom:10px;
+}
+.card p{
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.7;
+}
+.note{
+  text-align:center;
+  margin:48px 0 0;
+  color:#927fa7;
+  font-family:"Caveat",cursive;
+  font-size:1.5rem;
+}
+footer{
+  text-align:center;
+  background:#fff;
+  border-top:1px solid var(--line);
+  padding:32px 20px;
+  margin-top:60px;
+}
+footer strong{
+  color:var(--purple);
+  font-weight:700
+}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(36,21,54,.85);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+  padding:24px;
+}
+.modal.show{
+  display:flex;
+  animation:modalIn .35s cubic-bezier(.16,.86,.44,1)
+}
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:scale(.8)
+  }
+  to{
+    opacity:1;
+    transform:scale(1)
+  }
+}
+.modal-box{
+  width:min(820px,100%);
+  max-height:90vh;
+  background:#fff;
+  border-radius:32px;
+  padding:32px 28px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.modal-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--purple),var(--deep));
+}
+.modal-top{
+  text-align:center;
+  margin-bottom:24px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+.modal-top .mini{
+  font-size:1.9rem;
+  color:var(--purple);
+  margin-bottom:8px;
+  display:inline-block;
+}
+.modal-top h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.8rem,5vw,2.5rem);
+  color:var(--deep);
+  margin:8px 0;
+}
+.modal-top p{
+  color:var(--muted);
+  font-size:.9rem;
+  margin:0
+}
+.close{
+  position:absolute;
+  right:24px;
+  top:24px;
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:50%;
+  background:var(--lavender);
+  color:var(--deep);
+  font-size:24px;
+  cursor:pointer;
+  transition:background .2s ease;
+}
+.close:hover{
+  background:var(--deep);
+  color:#fff
+}
+.message{
+  font-size:1.05rem;
+  line-height:1.9;
+  color:#49365d;
+}
+.message p{
+  margin:0 0 20px;
+  white-space:pre-wrap;
+}
+.message .signoff{
+  font-family:"Caveat",cursive;
+  font-size:1.8rem;
+  color:var(--purple);
+  margin-top:20px;
+  display:block;
+}
+.modal-bottom{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.soft-btn{
+  border:1px solid var(--line);
+  background:#f8f3ff;
+  color:var(--deep);
+  border-radius:999px;
+  padding:12px 20px;
+  font-weight:600;
+  font-size:.88rem;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.soft-btn:hover{
+  background:var(--lavender);
+}
+.soft-btn:focus{
+  outline:2px solid var(--purple);
+  outline-offset:2px
+}
+.floating{
+  position:fixed;
+  pointer-events:none;
+  z-index:5;
+  bottom:-20px;
+  animation:floatUp 8s linear infinite;
+  opacity:.6;
+}
+@keyframes floatUp{
+  to{
+    transform:translateY(-120vh) rotate(30deg);
+    opacity:0
+  }
+}
+@media(max-width:760px){
+  .cards{
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+@media(max-width:480px){
+  main{
+    padding:55px 14px 65px
+  }
+  .cards{
+    grid-template-columns:1fr;
+    gap:16px
+  }
+  .card{
+    padding:24px 20px
+  }
+  .modal{
+    padding:12px
+  }
+  .modal-box{
+    border-radius:24px;
+    padding:24px 20px 16px
+  }
+  .modal-top h2{
+    font-size:clamp(1.5rem,5vw,2rem)
+  }
+}
+</style>
+</head>
+<body>
+
+<section class="hero" id="home">
+  <div class="hero-card">
+    <div class="big-heart">💜</div>
+    <div class="eyebrow">A LITTLE SURPRISE FOR SOMEONE SPECIAL</div>
+    <h1>A Little Place for You</h1>
+    <p class="hero-sub">Some people make ordinary moments unforgettable. This little corner of the internet is for one of my favourite people.</p>
+    <img class="hero-art" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=85" alt="Elegant purple and white birthday celebration">
+    <p class="hero-sub">Happy 18th Birthday, Baby Mi! 😝❤️</p>
+    <button class="btn" onclick="document.getElementById('surprises').scrollIntoView({behavior:'smooth'})">Open Your Surprise ✨</button>
+  </div>
+</section>
+
+<main id="surprises">
+  <div class="intro">
+    <div class="eyebrow">MADE WITH LOVE, JUST FOR YOU</div>
+    <h2>Six Little Messages 💌</h2>
+    <p>Take your time, bestie. There's a little piece of my heart behind every button.</p>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-icon">🎂</div>
+      <h3>The Birthday Girl</h3>
+      <p>Your birthday wishes and the reason this little website exists.</p>
+      <button class="btn" onclick="openMessage(0)">Open Message 💌</button>
+    </article>
+    <article class="card">
+      <div class="card-icon">🫂</div>
+      <h3>From SS2 to Now</h3>
+      <p>How our friendship became one of my favourite parts of growing up.</p>
+      <button class="btn" onclick="openMessage(1)">Open Message 💌</button>
+    </article>
+    <article class="card">
+      <div class="card-icon">🥹</div>
+      <h3>You Were There</h3>
+      <p>The moments when your friendship meant more than words could say.</p>
+      <button class="btn" onclick="openMessage(2)">Open Message 💌</button>
+    </article>
+    <article class="card">
+      <div class="card-icon">🤍</div>
+      <h3>Something I Regret</h3>
+      <p>A moment I still think about, and something I needed you to know.</p>
+      <button class="btn" onclick="openMessage(3)">Open Message 💌</button>
+    </article>
+    <article class="card">
+      <div class="card-icon">🌷</div>
+      <h3>I See You, Racheal</h3>
+      <p>For your kindness, your efforts and the person you are.</p>
+      <button class="btn" onclick="openMessage(4)">Open Message 💌</button>
+    </article>
+    <article class="card">
+      <div class="card-icon">🕊️</div>
+      <h3>For Your New Chapter</h3>
+      <p>My prayers, my hopes and my birthday wish for our friendship.</p>
+      <button class="btn" onclick="openMessage(5)">Open Message 💌</button>
+    </article>
+  </div>
+  <p class="note">A little world for my forever girl. 💜</p>
+</main>
+
+<footer>
+  Made with endless love by <strong>Janet</strong> ❤️<br>
+  For Racheal. From SS2 to forever.
+</footer>
+
+<div class="modal" id="messageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="backdropClose(event)">
+  <div class="modal-box">
+    <button class="close" aria-label="Close message" onclick="closeMessage()">×</button>
+    <div class="modal-top">
+      <div class="mini" id="modalIcon">💌</div>
+      <h2 id="modalTitle">A message for you</h2>
+      <p>Read this whenever you're ready. 💜</p>
+    </div>
+    <div class="message" id="modalMessage"></div>
+    <div class="modal-bottom">
+      <button class="soft-btn" onclick="previousMessage()">← Previous</button>
+      <button class="soft-btn" onclick="closeMessage()">Back to surprises</button>
+      <button class="soft-btn" onclick="nextMessage()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const sections = [
+{
+  title:"The Birthday Girl", icon:"🎂",
+  paragraphs:[
+  "HAPPY 18TH YEAR BIRTHDAY BABY MI😝❤️❤️",
+  "Dear DR RACHEL 🤭🤭",
+  "Happy birthday Bestie mii, My favourite human and my sister by choice😁😁😁",
+  "I have rewritten this letter so many times because, honestly, I don't think words will ever be enough to explain what you mean to me.",
+  "My baby is officially 18! 😭❤️",
+  "I wish I could scream it from the rooftops. I wish I could give you the loudest, most beautiful birthday celebration, spoil you silly, shower you with gifts and make this day as special as you deserve. I genuinely wish I had all the resources to do everything my heart wants to do for you.",
+  "But even though I might not be able to give you everything I wish I could right now, please never mistake that for the size of my love for you.",
+  "I have something waiting for you when you get back home, and I hope that when you receive it, you feel even a fraction of the love I have put into it.",
+  "But before anything else, I need you to know just how much you mean to me."
+  ]
+},
+{
+  title:"From SS2 to Now", icon:"🫂",
+  paragraphs:[
+  "If I remember clearly, it was around this period in SS2 that we became really close. And sometimes, I sit and think about how something that started as a friendship in secondary school has grown into something I genuinely cannot imagine my life without.",
+  "(By the way Happy 3 years anniversary. These 3years have been the best three years of my life 😁😁)",
+  "From those SS2 girls to where we are today. From our random conversations to the countless memories, from the laughter to the tears, from the silly moments to the serious conversations.",
+  "And if there's one thing I can confidently say, it's that you have been one of the most beautiful parts of my growing up."
+  ]
+},
+{
+  title:"You Were There", icon:"🥹",
+  paragraphs:[
+  "You have been the reason behind so many of my tears of joy. You have made me happy in ways you probably don't even understand. You have listened to me when I had nobody else to talk to. You have allowed me to express myself, even when I didn't know how to put my feelings into words.",
+  "There were moments when I didn't need advice. I didn't need somebody to solve my problems. I just needed somebody to listen.",
+  "And somehow, you were there, and I will never take it for granted.",
+  "I still remember the time you fainted. I don't think you understand how that moment made me realise just how important you had become to me. That moment stayed with me because the thought of something happening to you was something I couldn't bear.",
+  "It was one of those moments that made me realise that you weren't just another friend. You were someone whose happiness, safety and well-being genuinely mattered to me.",
+  "And then there's the time we both cried over your heartbreak. 😂",
+  "I hope we never become too busy to gist."
+  ]
+},
+{
+  title:"Something I Regret", icon:"🤍",
+  paragraphs:[
+  "And Racheal, there's something else I need to say.",
+  "I still remember forgetting your birthday last year😭😭",
+  "You actually had to call me to remind me that it was your birthday. And honestly, that is something I still regret.",
+  "I wish I could go back and do that day differently. Not because I didn't love you, but because I never wanted to make you feel like you weren't worth remembering.",
+  "You deserve to be remembered. You deserve to be celebrated. You deserve to have people who make you feel special without having to remind them that your special day has arrived.",
+  "And I'm sorry if I made you doubt that, even for a moment.",
+  "I don't ever want you to question your importance in my life because of one careless mistake.",
+  "If anything, I hope this birthday reminds you that you are someone I genuinely treasure."
+  ]
+},
+{
+  title:"I See You, Racheal", icon:"🌷",
+  paragraphs:[
+  "And speaking of things I treasure, let me talk about how incredibly kind you have been to me.",
+  "You made me feel remembered. You made me feel considered. You made me feel loved.",
+  "And I hope you know that I don't take any of these things lightly.",
+  "I may not always have the perfect words to express my gratitude, and I may not always be able to reciprocate things in the exact same way, but please believe me when I say that I carry these memories in my heart.",
+  "I see you, Racheal.",
+  "And I am so, so",
+  "see you, Racheal.",
+  "I see your kindness.",
+  "I see your efforts.",
+  "I see the things you do, even when you probably think nobody notices.",
+  "And I am so, so grateful that I get to call you my best friend"
+  ]
+},
+{
+  title:"For Your New Chapter", icon:"🕊️",
+  paragraphs:[
+  "As you enter this new chapter, I pray that life gives you so many reasons to smile.",
+  "I pray that the little girl who has grown into this beautiful young woman gets to experience the most beautiful things life has to offer.",
+  "I pray that God answers the prayers you have told nobody about. I pray that He gives you wisdom, understanding, strength, favour and grace.",
+  "I pray that you never lack genuine love.",
+  "I pray that you never have to shrink yourself to be accepted, beg to be valued or question whether you deserve good things.",
+  "I pray that you meet people who are as intentional about you as you are about them.",
+  "I pray that your heart is protected, your dreams are fulfilled and your efforts never go unrewarded.",
+  "And because I know my girl is studying Pharmacology, I pray that 200 level treats you kindly. 😂.",
+  "I want us to celebrate our graduations, our achievements, our answered prayers and all the beautiful things we are yet to experience.",
+  "And please, don't let the challenges of adulthood make you forget to enjoy being young.",
+  "You are 18 now, and there is so much life waiting for you.",
+  "Racheal, I don't know what the future holds.",
+  "I know we will grow. Our responsibilities will increase. School will get busier. We will meet different people, experience different things and probably have days when life doesn't give us enough time to catch up.",
+  "But I hope we never allow life to make strangers out of us.",
+  "I hope we still have those random conversations. I hope we still laugh at things nobody else understands.",
+  "And on the days when life isn't beautiful, I hope I can still be one of the people you run to.",
+  "Because that's what I want this friendship to be.",
+  "And if I could go back to SS2 and tell that younger version of myself anything, I think I would tell her:",
+  "\"That girl you're becoming close to? Hold her close. She's going to mean so much to you one day.\"",
+  "Racheal, thank you for being part of my story.",
+  "Thank you for every tear of joy.",
+  "Thank you for every time you listened.",
+  "Thank you for showing up when I needed you.",
+  "Thank you for making me feel remembered.",
+  "Thank you for your generosity, your kindness and your beautiful heart.",
+  "Thank you for being my friend, my bestie and my sister.",
+  "And most importantly, thank you to your mommy for bringing you into this world.",
+  "I am genuinely so happy she gave birth to you. I am grateful that you were born, that you grew up, that our paths crossed and that somewhere along the way, we found a friendship worth holding on to.",
+  "If there's one birthday wish I could make for myself today, it would be that I get to celebrate many more birthdays with you.",
+  "And remember that there is a girl named Janet who is ridiculously grateful that a girl named Racheal was born.",
+  "Welcome to adulthood, my love. May this chapter be softer, sweeter, brighter and more beautiful than you ever imagined.",
+  "I love you. I love you. I LOVE YOU.",
+  "And if I had to choose my best friend all over again, I would still choose you.",
+  "From SS2 to forever.",
+  "Forever my girl.",
+  "Forever my bestie.",
+  "Forever my Racheal. 🤍🫂",
+  "With all the love in my heart,",
+  "Your bestie,",
+  "Janet. ❤️"
+  ]
+}
+];
+
+let current = 0;
+function openMessage(index){
+ current=index;
+ const section=sections[index];
+ document.getElementById("modalTitle").textContent=section.title;
+ document.getElementById("modalIcon").textContent=section.icon;
+ const container=document.getElementById("modalMessage");
+ container.innerHTML="";
+ section.paragraphs.forEach((paragraph,i)=>{
+  const p=document.createElement("p");
+  p.textContent=paragraph;
+  if(index===5 && i>=section.paragraphs.length-3) p.className="signoff";
+  container.appendChild(p);
+ });
+ document.getElementById("messageModal").classList.add("show");
+ document.body.style.overflow="hidden";
+}
+function closeMessage(){
+ document.getElementById("messageModal").classList.remove("show");
+ document.body.style.overflow="";
+}
+function nextMessage(){openMessage((current+1)%sections.length)}
+function previousMessage(){openMessage((current-1+sections.length)%sections.length)}
+function backdropClose(event){if(event.target.id==="messageModal")closeMessage()}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMessage()});
+setInterval(()=>{
+ const el=document.createElement("span");
+ el.className="floating";
+ el.textContent=["♡","✦","💜","♥"][Math.floor(Math.random()*4)];
+ el.style.left=Math.random()*100+"vw";
+ el.style.fontSize=(14+Math.random()*14)+"px";
+ el.style.color=["#a982d0","#d3b8eb","#c58abf"][Math.floor(Math.random()*3)];
+ document.body.appendChild(el);
+ setTimeout(()=>el.remove(),8000);
+},150);
+setTimeout(()=>{
+ const txtEl=document.querySelector('.hero-sub');
+ if(txtEl){
+  txtEl.style.animation='typing 3s ease forwards';
+  const text=txtEl.textContent;
+  txtEl.textContent='';
+  let i=0;
+  const timer=setInterval(()=>{
+   if(i<text.length){
+    txtEl.textContent+=text.charAt(i);
+    i++;
+   }else{
+    clearInterval(timer);
+   }
+  },100);
+ }
+},500);
+</script>
+</body>
+</html>
